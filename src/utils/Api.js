@@ -24,7 +24,7 @@ class Api {
   }
 
   getUserInfo() {//запроcить инф. пользователя
-    // console.log(`getUserInfo (запроcить инф. пользователя)`);
+    console.log(`getUserInfo (запроcить инф. пользователя)`);
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     })
