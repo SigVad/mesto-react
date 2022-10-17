@@ -73,11 +73,11 @@ function App() {
     }
   }
   
-  // function handleCardDelete(card) {
-  //   api.deleteCard(card._id).then(() => {
-  //     setCards((state) => state.filter((c) => c._id !== card._id));
-  //   });
-  // }
+  function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      setCards((state) => state.filter((c) => c._id !== card._id));
+    });
+  }
 
   // function handleAddPostSubmit ({name, link}) {
   //   api.createCard({name, link}).then((newCard) => {

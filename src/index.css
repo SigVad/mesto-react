@@ -27,6 +27,7 @@
 @import url(./blocks/element/__like-number/element__like-number.css);
 @import url(./blocks/element/__like-button/element__like-button.css);
 @import url(./blocks/element/__trash-button/element__trash-button.css);
+@import url(./blocks/element/__trash-button/_hidden/element__trash-button_hidden.css);
 @import url(./blocks/element/__like-button/_active/element__like-button_active.css);
 /* footer */
 @import url(./blocks/footer/footer.css);
