@@ -18,7 +18,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [currentCards, setCurrentCards] = useState([]);
+  const [cards, setCards] = useState([]);
   
   useEffect(() => {
     api.getUserInfo()
@@ -31,7 +31,7 @@ function App() {
 
     api.getInitialCards()
       .then((res) => {
-        setCurrentCards(res);
+        setCards(res);
       })
       .catch((err) => {
         console.log(err)
@@ -55,18 +55,23 @@ function App() {
     setSelectedCard(card);
   }
 
-  function handleCardLike(card) {console.log(`${card.name} liked!`)}
+
   function handleCardDelete(card) {console.log(`${card.name} Deleted!`)}
-  // function handleCardLike(card) {
-  //   const isLiked = card.likes.some((item) => {
-  //     item._id === CurrentUserContext._id;
-  //   })
-  //   if (isLiked) {
-  //     api.removeLike({ id: card._id });
-  //   } else {
-  //     api.addLike({ id: card._id });
-  //   }
-  // }
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((item) => {
+      return item._id === currentUser._id;
+    })
+    if (isLiked) {
+      api.dislikeCard(card._id).then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    });
+    } else {
+      api.likeCard(card._id).then((newCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    });
+    }
+  }
   
   // function handleCardDelete(card) {
   //   api.deleteCard(card._id).then(() => {
@@ -90,7 +95,7 @@ function App() {
 
   return (
     <>
-      <CardsContext.Provider value={currentCards}>
+      <CardsContext.Provider value={cards}>
         <CurrentUserContext.Provider value ={currentUser}>
           <Header />
           <Main

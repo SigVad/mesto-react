@@ -1,14 +1,13 @@
 //Выполнено поднятие стейта из компонента Main в App .
-import { useState, useContext, useEffect} from 'react';
+import { useContext } from 'react';
 //import avatar from '../images/profile/image.jpg';
-import {CurrentUserContext, CardsContext} from '../contexts/CurrentUserContext';
-import {api} from '../utils/Api.js';
+import { CurrentUserContext, CardsContext } from '../contexts/CurrentUserContext';
 import Card from './Card';
 
 function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, handleCardLike, handleCardDelete}) {
   
   const currentUser = useContext(CurrentUserContext);
-  const currentCards = useContext(CardsContext);
+  const cards = useContext(CardsContext);
   
   return (
     <main className="content">
@@ -40,7 +39,7 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, handleCardL
       </section>
       <section className="elements content__break">
         <ul className="elements__list">
-          { currentCards.map((card) => {
+          { cards.map((card) => {
             return(
               <Card 
                 card={card}
