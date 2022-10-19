@@ -1,4 +1,3 @@
-//Выполнено поднятие стейта из компонента Main в App .
 import { useContext } from 'react';
 import { CurrentUserContext, } from '../contexts/CurrentUserContext';
 import Card from './Card';
