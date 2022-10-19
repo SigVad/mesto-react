@@ -8,7 +8,6 @@ class Api {
   
   _checkAnswer = (res) => {//проверить ответ
     if (res.ok) {
-      // console.log(`ОТВЕТ: ${res}`);
       return res.json();
     }
     console.log(`Ошибка ${res.status}`);
@@ -32,7 +31,7 @@ class Api {
   }
 
   changeAvatar(link) {//изменить аватар
-    // console.log(`changeAvatar (изменить аватар)`);
+    console.log(`changeAvatar (изменить аватар)`);
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -44,20 +43,20 @@ class Api {
   }
 
   changeUserInfo(user) {//изменить информацию пользователя
-    // console.log(`changeUserInfo (изменить инф. пользователя)`);
+    console.log(`changeUserInfo (изменить инф. пользователя)`);
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",//частичное обновление ресурса
       headers: this._headers,
       body: JSON.stringify({
         name: user.name,
-        about: user.about,
+        about: user.about
       }),
     })
       .then(this._checkAnswer);
   }
 
   addCard(value) {//отправить новую карту
-    // console.log(`addCard (отправить новую карту)`);
+    console.log(`addCard (отправить новую карту)`);
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -67,7 +66,7 @@ class Api {
   }
 
   likeCard(cardId) {//отправить лайк
-    // console.log(`likeCard (отправить лайк)`);
+    console.log(`likeCard (отправить лайк)`);
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",//заменить ресурс полностью
       headers: this._headers,
@@ -76,7 +75,7 @@ class Api {
   }
 
   dislikeCard(cardId) {//удаление лайка
-    // console.log(`dislikeCard (удаление лайка)`);
+    console.log(`dislikeCard (удаление лайка)`);
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
@@ -85,7 +84,7 @@ class Api {
   }
   
   deleteCard(cardId) {//удаление карты, исп в обработчике сабмита подтверждения
-    // console.log(`deleteCard (удаление карты)`);
+    console.log(`deleteCard (удаление карты)`);
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,

@@ -1,13 +1,20 @@
 //Выполнено поднятие стейта из компонента Main в App .
 import { useContext } from 'react';
-//import avatar from '../images/profile/image.jpg';
-import { CurrentUserContext, CardsContext } from '../contexts/CurrentUserContext';
+import { CurrentUserContext, } from '../contexts/CurrentUserContext';
 import Card from './Card';
 
-function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, handleCardLike, handleCardDelete}) {
+function Main(
+  {
+    onEditAvatar,
+    onEditProfile,
+    onAddPlace,
+    onCardClick,
+    cards,
+    handleCardLike,
+    handleCardDelete
+  }) {
   
   const currentUser = useContext(CurrentUserContext);
-  const cards = useContext(CardsContext);
   
   return (
     <main className="content">
