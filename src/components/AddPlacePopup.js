@@ -4,6 +4,12 @@ import PopupWithForm from './PopupWithForm';
 function AddPlacePopup ({onClose, isOpen, changeAddCard}){
   const [cardName, setCardName] = useState('');
   const [link, setLink]   = useState('');
+  
+  //очистить инпут при открытии
+  useEffect(()=>{
+    setCardName('');
+    setLink('');
+  },[isOpen]); 
 
   function handleSubmit(evt) {
     evt.preventDefault();

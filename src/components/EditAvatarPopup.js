@@ -3,10 +3,11 @@ import PopupWithForm from './PopupWithForm';
 
 function EditAvatarPopup ({ isOpen, onClose, changeAvatar }) {
     const avatarRef = useRef();
-
+    
+    //очистить инпут при открытии
     useEffect(()=>{
       avatarRef.current.value = '';
-    },[avatarRef]);
+    },[isOpen]);
 
     function handleSubmit(evt) {
         evt.preventDefault();

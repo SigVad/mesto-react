@@ -8,11 +8,11 @@ function EditProfilePopup ({ onClose, isOpen, onUpdateUser }){
   const [name, setName] = useState('');
   const [description, setDescription]   = useState('');
 
-  //добавить данные пользователя в инпуты формы
+  //добавить данные пользователя в инпуты формы при открытии
   useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about)
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
